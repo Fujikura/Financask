@@ -10,5 +10,17 @@ class Transacao(valor: BigDecimal,
     private val valor = valor
     private val categoria = categoria
     private val data = data
-    
+
+    fun getValor(): BigDecimal {
+        return this.valor
+    }
+
+    fun getCategoria(): String{
+        return this.categoria
+    }
+
+    fun getData(): Calendar{
+        return this.data
+    }
+
 }
