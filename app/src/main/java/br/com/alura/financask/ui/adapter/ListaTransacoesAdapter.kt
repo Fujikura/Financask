@@ -18,7 +18,9 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>) : BaseAdapter() {
 
         val transacao = transacoes[position]
 
-        view.transacao_valor.setText(transacao.getValor().toString());
+        view.transacao_valor.text = transacao.valor.toString()
+        view.transacao_categoria.text = transacao.categoria
+        view.transacao_data.text = transacao.data.toString()
         return view
     }
 
