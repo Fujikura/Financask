@@ -3,6 +3,7 @@ package br.com.alura.financask.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.financask.R
+import br.com.alura.financask.modelo.Tipo
 import br.com.alura.financask.modelo.Transacao
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
@@ -18,13 +19,15 @@ class ListaTransacoesActivity : AppCompatActivity() {
         val transacao1 = Transacao(
             BigDecimal(100.00),
             "Comida",
-            Calendar.getInstance()
+            Calendar.getInstance(),
+            Tipo.DESPESA
         )
 
         val transacao2 = Transacao(
             BigDecimal(3000.00),
             "Salario",
-            Calendar.getInstance()
+            Calendar.getInstance(),
+            Tipo.RECEITA
         )
 
         val transacoes = listOf(transacao1, transacao2)
