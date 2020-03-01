@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import br.com.alura.financask.R
+import br.com.alura.financask.extension.formataParaBrasileiro
 import br.com.alura.financask.modelo.Transacao
 import kotlinx.android.synthetic.main.transacao_item.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ListaTransacoesAdapter(transacoes: List<Transacao>) : BaseAdapter() {
 
@@ -28,11 +27,6 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>) : BaseAdapter() {
         return view
     }
 
-    fun Calendar.formataParaBrasileiro():String{
-        val formataBrasileiro = "dd/MM/yyyy"
-        val format = SimpleDateFormat(formataBrasileiro)
-        return format.format(this.time)
-    }
 
     override fun getItem(position: Int): Transacao {
         return transacoes[position]
