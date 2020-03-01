@@ -22,16 +22,16 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>) : BaseAdapter() {
 
         view.transacao_valor.text = transacao.valor.toString()
         view.transacao_categoria.text = transacao.categoria
-        view.transacao_data.text = formataParaBrasileiro(transacao)
+        view.transacao_data.text = transacao.data.formataParaBrasileiro()
 
 
         return view
     }
 
-    fun formataParaBrasileiro(transacao: Transacao):String{
+    fun Calendar.formataParaBrasileiro():String{
         val formataBrasileiro = "dd/MM/yyyy"
         val format = SimpleDateFormat(formataBrasileiro)
-        return format.format(transacao.data.time)
+        return format.format(this.time)
     }
 
     override fun getItem(position: Int): Transacao {
