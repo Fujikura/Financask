@@ -18,16 +18,15 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
         val transacao1 = Transacao(
             BigDecimal(100.00),
-            "Comida",
-            Calendar.getInstance(),
-            Tipo.DESPESA
+            Tipo.DESPESA,
+            "Comida"
+
         )
 
         val transacao2 = Transacao(
             BigDecimal(3000.00),
-            "Salario",
-            Calendar.getInstance(),
             Tipo.RECEITA
+
         )
 
         val transacoes = listOf(transacao1, transacao2)
