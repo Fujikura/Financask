@@ -29,9 +29,23 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
         )
 
-        val transacoes = listOf(transacao1, transacao2)
+        val transacao3 = Transacao(
+            tipo = Tipo.RECEITA,
+            valor = BigDecimal(800.00),
+            categoria = "Vale"
+        )
 
-        lista_transacoes_listview.setAdapter(ListaTransacoesAdapter(transacoes))
+        val transacao4 = Transacao(
+            valor = BigDecimal(150.00),
+            tipo = Tipo.DESPESA,
+            categoria = "Comida"
+        )
+
+        val transacoes = listOf(
+            transacao1, transacao2, transacao3, transacao4
+        )
+
+        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes)
     }
 
 }
