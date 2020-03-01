@@ -17,15 +17,15 @@ class ListaTransacoesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_transacoes)
 
         val transacao1 = Transacao(
-            BigDecimal(100.00),
-            Tipo.DESPESA,
-            "Comida"
+            valor = BigDecimal(100.00),
+            tipo = Tipo.DESPESA,
+            categoria = "Comida"
 
         )
 
         val transacao2 = Transacao(
-            BigDecimal(3000.00),
-            Tipo.RECEITA
+            tipo = Tipo.RECEITA,
+            valor = BigDecimal(3000.00)
 
         )
 
