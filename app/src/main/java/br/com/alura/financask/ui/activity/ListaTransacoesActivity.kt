@@ -8,7 +8,6 @@ import br.com.alura.financask.modelo.Transacao
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
 import java.math.BigDecimal
-import java.util.*
 
 class ListaTransacoesActivity : AppCompatActivity() {
 
@@ -16,36 +15,39 @@ class ListaTransacoesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_transacoes)
 
-        val transacao1 = Transacao(
-            valor = BigDecimal(100.00),
-            tipo = Tipo.DESPESA,
-            categoria = "Comida"
+        val transacoes = transacoesDeExemplo()
 
-        )
+        configuraLista(transacoes)
+    }
 
-        val transacao2 = Transacao(
-            tipo = Tipo.RECEITA,
-            valor = BigDecimal(3000.00)
-
-        )
-
-        val transacao3 = Transacao(
-            tipo = Tipo.RECEITA,
-            valor = BigDecimal(800.00),
-            categoria = "Vale"
-        )
-
-        val transacao4 = Transacao(
-            valor = BigDecimal(150.00),
-            tipo = Tipo.DESPESA,
-            categoria = "Compras realizadas para setor de limpeza"
-        )
-
-        val transacoes = listOf(
-            transacao1, transacao2, transacao3, transacao4
-        )
-
+    private fun configuraLista(transacoes: List<Transacao>) {
         lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes)
+    }
+
+    private fun transacoesDeExemplo(): List<Transacao> {
+        return listOf(
+            Transacao(
+                valor = BigDecimal(100.00),
+                tipo = Tipo.DESPESA,
+                categoria = "Comida"
+
+            ),
+            Transacao(
+                tipo = Tipo.RECEITA,
+                valor = BigDecimal(3000.00)
+            ),
+            Transacao(
+                tipo = Tipo.RECEITA,
+                valor = BigDecimal(800.00),
+                categoria = "Vale"
+            )
+            ,
+            Transacao(
+                valor = BigDecimal(150.00),
+                tipo = Tipo.DESPESA,
+                categoria = "Compras realizadas para setor de limpeza"
+            )
+        )
     }
 
 }
