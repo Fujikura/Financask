@@ -3,10 +3,12 @@ package br.com.alura.financask.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.financask.R
+import br.com.alura.financask.extension.formataParaBrasileiro
 import br.com.alura.financask.modelo.Tipo
 import br.com.alura.financask.modelo.Transacao
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
+import kotlinx.android.synthetic.main.resumo_card.*
 import java.math.BigDecimal
 
 class ListaTransacoesActivity : AppCompatActivity() {
@@ -16,6 +18,14 @@ class ListaTransacoesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_transacoes)
 
         val transacoes = transacoesDeExemplo()
+        var totalReceita = BigDecimal.ZERO
+
+        for(transacao: Transacao in transacoes){
+            if(transacao.tipo == Tipo.RECEITA)
+                totalReceita = totalReceita.plus(transacao.valor)
+        }
+
+        resumo_card_receita.text = totalReceita.formataParaBrasileiro()
 
         configuraLista(transacoes)
     }
