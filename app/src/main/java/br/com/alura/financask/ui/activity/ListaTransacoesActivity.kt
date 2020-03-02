@@ -20,12 +20,17 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
         val transacoes = transacoesDeExemplo()
 
-        val view = window.decorView
-
-        ResumoView(view).adicionaReceitaNoResumo(transacoes)
+        configuraResumo(transacoes)
         configuraLista(transacoes)
     }
 
+    private fun configuraResumo(transacoes: List<Transacao>) {
+        val view = window.decorView
+        val resumoView = ResumoView(view, transacoes)
+
+        resumoView.adicionaReceitaNoResumo()
+        resumoView.adicionaDespesaNoResumo()
+    }
 
 
     private fun configuraLista(transacoes: List<Transacao>) {

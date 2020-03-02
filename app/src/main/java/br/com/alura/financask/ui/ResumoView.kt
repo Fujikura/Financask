@@ -7,9 +7,10 @@ import br.com.alura.financask.modelo.Transacao
 import kotlinx.android.synthetic.main.resumo_card.view.*
 import java.math.BigDecimal
 
-class ResumoView(private val view: View) {
+class ResumoView(private val view: View,
+                 private val transacoes: List<Transacao>) {
 
-    fun adicionaReceitaNoResumo(transacoes: List<Transacao>) {
+    fun adicionaReceitaNoResumo() {
         var totalReceita = BigDecimal.ZERO
 
         for (transacao: Transacao in transacoes) {
@@ -18,5 +19,16 @@ class ResumoView(private val view: View) {
         }
 
         view.resumo_card_receita.text = totalReceita.formataParaBrasileiro()
+    }
+
+    fun adicionaDespesaNoResumo() {
+        var totalDespesa = BigDecimal.ZERO
+
+        for (transacao: Transacao in transacoes) {
+            if (transacao.tipo == Tipo.DESPESA)
+                totalDespesa = totalDespesa.plus(transacao.valor)
+        }
+
+        view.resumo_card_despesa.text = totalDespesa.formataParaBrasileiro()
     }
 }
