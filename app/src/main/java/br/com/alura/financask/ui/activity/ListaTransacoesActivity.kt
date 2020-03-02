@@ -6,6 +6,7 @@ import br.com.alura.financask.R
 import br.com.alura.financask.extension.formataParaBrasileiro
 import br.com.alura.financask.modelo.Tipo
 import br.com.alura.financask.modelo.Transacao
+import br.com.alura.financask.ui.ResumoView
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
 import kotlinx.android.synthetic.main.resumo_card.*
@@ -19,20 +20,13 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
         val transacoes = transacoesDeExemplo()
 
-        adicionaReceitaNoResumo(transacoes)
+        val view = window.decorView
+
+        ResumoView(view).adicionaReceitaNoResumo(transacoes)
         configuraLista(transacoes)
     }
 
-    private fun adicionaReceitaNoResumo(transacoes: List<Transacao>) {
-        var totalReceita = BigDecimal.ZERO
 
-        for (transacao: Transacao in transacoes) {
-            if (transacao.tipo == Tipo.RECEITA)
-                totalReceita = totalReceita.plus(transacao.valor)
-        }
-
-        resumo_card_receita.text = totalReceita.formataParaBrasileiro()
-    }
 
     private fun configuraLista(transacoes: List<Transacao>) {
         lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
