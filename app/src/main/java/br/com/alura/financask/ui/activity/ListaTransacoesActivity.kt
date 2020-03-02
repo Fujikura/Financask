@@ -38,7 +38,7 @@ class ListaTransacoesActivity : AppCompatActivity() {
         val transacao4 = Transacao(
             valor = BigDecimal(150.00),
             tipo = Tipo.DESPESA,
-            categoria = "Comida"
+            categoria = "Compras realizadas para setor de limpeza"
         )
 
         val transacoes = listOf(
