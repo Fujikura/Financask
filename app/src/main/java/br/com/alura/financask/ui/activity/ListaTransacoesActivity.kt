@@ -3,13 +3,11 @@ package br.com.alura.financask.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.financask.R
-import br.com.alura.financask.extension.formataParaBrasileiro
 import br.com.alura.financask.modelo.Tipo
 import br.com.alura.financask.modelo.Transacao
 import br.com.alura.financask.ui.ResumoView
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
-import kotlinx.android.synthetic.main.resumo_card.*
 import java.math.BigDecimal
 
 class ListaTransacoesActivity : AppCompatActivity() {
@@ -28,8 +26,8 @@ class ListaTransacoesActivity : AppCompatActivity() {
         val view = window.decorView
         val resumoView = ResumoView(view, transacoes)
 
-        resumoView.adicionaReceitaNoResumo()
-        resumoView.adicionaDespesaNoResumo()
+        resumoView.adicionaReceita()
+        resumoView.adicionaDespesa()
     }
 
 
