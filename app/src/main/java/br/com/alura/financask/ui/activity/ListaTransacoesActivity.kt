@@ -18,16 +18,20 @@ class ListaTransacoesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_transacoes)
 
         val transacoes = transacoesDeExemplo()
+
+        adicionaReceitaNoResumo(transacoes)
+        configuraLista(transacoes)
+    }
+
+    private fun adicionaReceitaNoResumo(transacoes: List<Transacao>) {
         var totalReceita = BigDecimal.ZERO
 
-        for(transacao: Transacao in transacoes){
-            if(transacao.tipo == Tipo.RECEITA)
+        for (transacao: Transacao in transacoes) {
+            if (transacao.tipo == Tipo.RECEITA)
                 totalReceita = totalReceita.plus(transacao.valor)
         }
 
         resumo_card_receita.text = totalReceita.formataParaBrasileiro()
-
-        configuraLista(transacoes)
     }
 
     private fun configuraLista(transacoes: List<Transacao>) {
