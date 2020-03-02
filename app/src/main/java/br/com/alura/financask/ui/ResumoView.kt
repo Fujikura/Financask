@@ -14,13 +14,18 @@ class ResumoView(
     private val resumo: Resumo = Resumo(transacoes)
 
     fun adicionaReceita() {
-        var totalReceita = resumo.receita().formataParaBrasileiro()
+        val totalReceita = resumo.receita().formataParaBrasileiro()
         view.resumo_card_receita.text = totalReceita
     }
 
     fun adicionaDespesa() {
-        var totalDespesa = resumo.despesa().formataParaBrasileiro()
+        val totalDespesa = resumo.despesa().formataParaBrasileiro()
         view.resumo_card_despesa.text = totalDespesa
+    }
+
+    fun adicionaTotal(){
+        val total = resumo.total().formataParaBrasileiro()
+        view.resumo_card_total.text = total
     }
 
 }

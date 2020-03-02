@@ -21,4 +21,8 @@ class Resumo(private val transacoes: List<Transacao>) {
         }
         return totalDespesa
     }
+
+    fun total(): BigDecimal{
+        return receita().subtract(despesa())
+    }
 }

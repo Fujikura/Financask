@@ -28,6 +28,7 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
         resumoView.adicionaReceita()
         resumoView.adicionaDespesa()
+        resumoView.adicionaTotal()
     }
 
 
