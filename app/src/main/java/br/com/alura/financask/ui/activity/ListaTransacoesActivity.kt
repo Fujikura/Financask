@@ -21,7 +21,7 @@ class ListaTransacoesActivity : AppCompatActivity() {
     }
 
     private fun configuraLista(transacoes: List<Transacao>) {
-        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes)
+        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
     }
 
     private fun transacoesDeExemplo(): List<Transacao> {

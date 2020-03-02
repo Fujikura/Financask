@@ -13,19 +13,20 @@ import br.com.alura.financask.modelo.Tipo
 import br.com.alura.financask.modelo.Transacao
 import kotlinx.android.synthetic.main.transacao_item.view.*
 
-class ListaTransacoesAdapter(private val transacoes: List<Transacao>) : BaseAdapter() {
+class ListaTransacoesAdapter(
+    private val transacoes: List<Transacao>,
+    private val contexto: Context
+) : BaseAdapter() {
     private val limiteCategoria: Int = 14
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-        val context = parent.context
-
-        val view = LayoutInflater.from(context)
+        val view = LayoutInflater.from(contexto)
             .inflate(R.layout.transacao_item, parent, false)
 
         val transacao = transacoes[position]
 
         adicionaIcone(transacao, view)
-        adicionaValor(view, transacao, context)
+        adicionaValor(view, transacao)
         adicionaCategoria(view, transacao)
         adicionaData(view, transacao)
 
@@ -51,24 +52,30 @@ class ListaTransacoesAdapter(private val transacoes: List<Transacao>) : BaseAdap
         transacao: Transacao,
         view: View
     ) {
-        if (transacao.tipo == Tipo.RECEITA) {
-            view.transacao_icone.setBackgroundResource(R.drawable.icone_transacao_item_receita)
-        } else {
-            view.transacao_icone.setBackgroundResource(R.drawable.icone_transacao_item_despesa)
-        }
+        val icone: Int = iconePor(transacao.tipo)
+        view.transacao_icone.setBackgroundResource(icone)
     }
 
     private fun adicionaValor(
         view: View,
-        transacao: Transacao,
-        context: Context
+        transacao: Transacao
     ) {
-        if (transacao.tipo == Tipo.RECEITA) {
-            view.transacao_valor.setTextColor(ContextCompat.getColor(context, R.color.receita))
-        } else {
-            view.transacao_valor.setTextColor(ContextCompat.getColor(context, R.color.despesa))
-        }
+        val cor: Int = corPor(transacao.tipo)
+        view.transacao_valor.setTextColor(cor)
         view.transacao_valor.text = transacao.valor.formataParaBrasileiro()
+    }
+
+    private fun iconePor(tipo: Tipo): Int{
+        if (tipo == Tipo.RECEITA)
+            return R.drawable.icone_transacao_item_receita
+        return R.drawable.icone_transacao_item_despesa
+    }
+
+    private fun corPor(tipo: Tipo): Int {
+        if (tipo == Tipo.RECEITA) {
+            return ContextCompat.getColor(contexto, R.color.receita)
+        }
+        return ContextCompat.getColor(contexto, R.color.despesa)
     }
 
 
