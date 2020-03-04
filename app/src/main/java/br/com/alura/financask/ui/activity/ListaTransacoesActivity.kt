@@ -39,7 +39,7 @@ class ListaTransacoesActivity : AppCompatActivity() {
     private fun transacoesDeExemplo(): List<Transacao> {
         return listOf(
             Transacao(
-                valor = BigDecimal(400.00),
+                valor = BigDecimal(600.00),
                 tipo = Tipo.DESPESA,
                 categoria = "Comida"
 
