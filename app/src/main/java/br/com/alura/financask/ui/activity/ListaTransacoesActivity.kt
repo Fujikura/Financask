@@ -46,11 +46,11 @@ class ListaTransacoesActivity : AppCompatActivity() {
             ),
             Transacao(
                 tipo = Tipo.RECEITA,
-                valor = BigDecimal(300.00)
+                valor = BigDecimal(500.00)
             ),
             Transacao(
                 tipo = Tipo.RECEITA,
-                valor = BigDecimal(100.00),
+                valor = BigDecimal(150.00),
                 categoria = "Vale"
             )
             ,
