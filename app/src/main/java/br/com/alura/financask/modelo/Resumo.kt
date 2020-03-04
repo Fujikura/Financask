@@ -12,12 +12,9 @@ class Resumo(private val transacoes: List<Transacao>) {
     }
 
     fun despesa(): BigDecimal {
-        var totalDespesa = BigDecimal.ZERO
-        for (transacao: Transacao in transacoes) {
-            if (transacao.tipo == Tipo.DESPESA)
-                totalDespesa = totalDespesa.plus(transacao.valor)
-        }
-        return totalDespesa
+        val somaDaDespesa = transacoes.filter { transacao -> transacao.tipo == Tipo.DESPESA }
+            .sumByDouble { transacao -> transacao.valor.toDouble() }
+        return BigDecimal(somaDaDespesa)
     }
 
     fun total(): BigDecimal{
