@@ -23,13 +23,10 @@ class ListaTransacoesActivity : AppCompatActivity() {
         configuraResumo(transacoes)
         configuraLista(transacoes)
 
-        lista_transacoes_adiciona_receita.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                Toast.makeText(this@ListaTransacoesActivity, "clique de receita", Toast.LENGTH_LONG)
-                    .show()
-            }
-
-        })
+        lista_transacoes_adiciona_receita.setOnClickListener {
+            Toast.makeText(this, "clique de receita", Toast.LENGTH_LONG)
+                .show()
+        }
     }
 
     private fun configuraResumo(transacoes: List<Transacao>) {
